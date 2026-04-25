@@ -1,6 +1,12 @@
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1.25rem 4rem;
   background: rgba(4, 4, 8, 0.80);
   backdrop-filter: blur(18px);
@@ -13,7 +19,7 @@
   font-size: 1.1rem;
   letter-spacing: 4px;
   color: var(--neon-lime);
-  text-shadow: 0 0 20px var(--neon-lime), 0 0 60px rgba(184,255,0,0.3);
+  text-shadow: 0 0 20px var(--neon-lime), 0 0 60px rgba(184, 255, 0, 0.3);
   user-select: none;
 }
 
@@ -21,7 +27,8 @@
   display: flex;
   gap: 2.5rem;
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
@@ -34,14 +41,94 @@
   position: relative;
   transition: color 0.25s, text-shadow 0.25s;
 }
+
 .link::after {
   content: '';
-  position: absolute; bottom: -4px; left: 0; right: 0;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
   height: 1px;
   background: var(--neon-cyan);
   box-shadow: 0 0 8px var(--neon-cyan);
   transform: scaleX(0);
   transition: transform 0.3s;
 }
-.link:hover { color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan); }
-.link:hover::after { transform: scaleX(1); }
+
+.link:hover {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px var(--neon-cyan);
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Hamburger button (hidden on desktop) ── */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 210;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--neon-lime);
+  box-shadow: 0 0 6px var(--neon-lime);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0 0.5rem;
+    border-top: 1px solid rgba(184, 255, 0, 0.12);
+    margin-top: 0.75rem;
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .links li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .link {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+  }
+}

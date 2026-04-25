@@ -21,3 +21,14 @@
   letter-spacing: 2px;
   color: var(--muted);
 }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+

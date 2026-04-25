@@ -31,3 +31,18 @@
   box-shadow: 0 0 16px color-mix(in srgb, var(--c) 30%, transparent);
   text-shadow: 0 0 8px var(--c);
 }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section { padding: 5rem 1.5rem; }
+  .tag {
+    font-size: 0.62rem;
+    padding: 0.65rem 1.2rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 4rem 1.25rem; }
+}
+

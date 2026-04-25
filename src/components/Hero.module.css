@@ -269,3 +269,69 @@
   from { opacity:0; }
   to   { opacity:1; }
 }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    padding: 7rem 2.5rem 5rem;
+    gap: 1.5rem;
+  }
+  .imgWrap { width: 280px; height: 360px; }
+  .floatLabelBL { left: -20px; bottom: -14px; }
+  .floatLabelTR { right: -20px; top: 14px; }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 4rem;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .right {
+    order: -1;
+  }
+
+  .imgWrap {
+    width: 220px;
+    height: 280px;
+    margin: 0 auto;
+  }
+
+  .floatLabelBL,
+  .floatLabelTR {
+    font-size: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    letter-spacing: 2px;
+  }
+  .floatLabelBL { left: -10px; bottom: -20px; }
+  .floatLabelTR { right: -10px; top: 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 6rem 1.25rem 3rem;
+  }
+
+  .name {
+    font-size: clamp(2.5rem, 14vw, 4.5rem);
+    letter-spacing: -1px;
+  }
+
+  .imgWrap { width: 180px; height: 230px; }
+
+  .btnNeon, .btnGhost {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.58rem;
+  }
+}

@@ -65,3 +65,31 @@
   opacity: 0.75;
   padding-top: 0.15rem;
 }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .section { padding: 5rem 2.5rem 6rem; }
+  .item {
+    grid-template-columns: 160px 1fr auto;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 4rem 1.5rem 5rem; }
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1.5rem;
+  }
+  .icon { display: none; }
+  .date { padding-top: 0; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 3.5rem 1.25rem 4rem; }
+  .co { font-size: 1rem; }
+  .desc { font-size: 0.88rem; }
+}
+

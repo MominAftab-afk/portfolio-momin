@@ -1,5 +1,10 @@
 import { useEffect, useRef } from 'react'
 
+// Don't render custom cursor on touch devices
+const isTouch = () =>
+  typeof window !== 'undefined' &&
+  (window.matchMedia('(hover: none)').matches || 'ontouchstart' in window)
+
 export default function Cursor() {
   const dotRef   = useRef(null)
   const ringRef  = useRef(null)
@@ -7,6 +12,7 @@ export default function Cursor() {
   const rafRef   = useRef(null)
 
   useEffect(() => {
+    if (isTouch()) return   // bail out on touch screens
     const onMove = (e) => {
       posRef.current.mx = e.clientX
       posRef.current.my = e.clientY
@@ -48,6 +54,8 @@ export default function Cursor() {
       cancelAnimationFrame(rafRef.current)
     }
   }, [])
+
+  if (isTouch()) return null
 
   return (
     <>

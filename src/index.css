@@ -88,3 +88,17 @@ body::after {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Responsive base ── */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}
+
+/* Restore system cursor on touch/mobile devices */
+@media (hover: none) {
+  body { cursor: auto; }
+}

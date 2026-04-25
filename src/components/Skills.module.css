@@ -60,3 +60,17 @@
   background: var(--c);
   box-shadow: 0 0 14px var(--c), 0 0 28px var(--c);
 }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section { padding: 5rem 1.5rem; }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 4rem 1.25rem; }
+}
+
