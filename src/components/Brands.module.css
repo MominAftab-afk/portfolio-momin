@@ -1,0 +1,33 @@
+.section {
+  padding: 8rem 4rem;
+  text-align: center;
+}
+
+.head { margin-bottom: 4rem; }
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--dim-border);
+  color: var(--text-soft);       /* ← readable at rest */
+  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s, text-shadow 0.3s;
+  cursor: default;
+}
+.tag:hover {
+  color: var(--c);
+  border-color: var(--c);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--c) 30%, transparent);
+  text-shadow: 0 0 8px var(--c);
+}

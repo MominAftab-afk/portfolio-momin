@@ -1,0 +1,23 @@
+.footer {
+  padding: 1.75rem 4rem;
+  background: var(--surface);
+  border-top: 1px solid var(--dim-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--muted);
+}
+
+.copy {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+}

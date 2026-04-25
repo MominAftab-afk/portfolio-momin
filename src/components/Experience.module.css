@@ -1,0 +1,67 @@
+.section {
+  padding: 6rem 4rem 8rem;
+  background: var(--surface);
+  border-top: 1px solid var(--dim-border);
+}
+
+.head { margin-bottom: 4rem; }
+
+.list { display: flex; flex-direction: column; gap: 1px; }
+
+.item {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  gap: 3rem;
+  align-items: start;
+  padding: 2.5rem 2.5rem;
+  border: 1px solid var(--dim-border);
+  background: var(--bg);
+  position: relative; overflow: hidden;
+  transition: background 0.35s, border-color 0.35s;
+  cursor: default;
+}
+.item::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 20px var(--neon-cyan);
+  transform: scaleY(0);
+  transition: transform 0.35s ease;
+}
+.item:hover::before   { transform: scaleY(1); }
+.item:hover {
+  background: rgba(0,255,247,0.025);
+  border-color: rgba(0,255,247,0.18);
+}
+
+.date {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);           /* date can stay muted — it's intentional */
+  padding-top: 0.25rem;
+  line-height: 1.6;
+}
+
+.co {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);            /* ← company name: full white */
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: var(--text-soft);       /* ← was dim, now clearly readable */
+  line-height: 1.8;
+}
+
+.icon {
+  font-size: 1.5rem;
+  opacity: 0.75;
+  padding-top: 0.15rem;
+}

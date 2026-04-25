@@ -1,0 +1,66 @@
+.section {
+  padding: 8rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.left { display: flex; flex-direction: column; }
+
+.body {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-soft);      /* ← visible on dark bg */
+  margin-bottom: 1.4rem;
+  font-weight: 400;
+}
+.body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--dim-border);
+  border: 1px solid var(--dim-border);
+}
+
+.statCard {
+  background: var(--surface);
+  padding: 2.2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+  cursor: default;
+}
+.statCard::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--neon-lime);
+  box-shadow: 0 0 12px var(--neon-lime);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.statCard:hover::before { transform: scaleX(1); }
+.statCard:hover { background: rgba(184,255,0,0.04); }
+
+.statNum {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 3.2rem;
+  color: var(--neon-lime);
+  text-shadow: 0 0 40px rgba(184,255,0,0.5);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.statLabel {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-soft);       /* ← was --muted (hard to read), now visible */
+}

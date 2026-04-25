@@ -1,0 +1,90 @@
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+/* ── TOKENS ── */
+:root {
+  --bg:           #040408;
+  --surface:      #0a0a14;
+  --surface2:     #10101c;
+  --neon-lime:    #b8ff00;
+  --neon-pink:    #ff007f;
+  --neon-cyan:    #00fff7;
+  --neon-purple:  #bf00ff;
+  --neon-orange:  #ff6600;
+  --text:         #f0f0ff;        /* near-white — high contrast body */
+  --text-soft:    #c8c8e8;        /* secondary body text */
+  --muted:        #8080a8;        /* captions, meta, labels */
+  --dim-border:   rgba(255,255,255,0.08);
+  --radius:       0px;            /* sharp aesthetic */
+}
+
+/* ── BASE ── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* scanlines */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--neon-lime); box-shadow: 0 0 6px var(--neon-lime); }
+
+/* ── TYPOGRAPHY HELPERS ── */
+.font-mono  { font-family: 'Syne Mono', monospace; }
+.font-heavy { font-family: 'Unbounded', sans-serif; }
+
+/* ── SECTION COMMON ── */
+.section-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.section-title .hl {
+  color: var(--neon-lime);
+  text-shadow: 0 0 30px rgba(184,255,0,0.45);
+}
+
+/* ── SCROLL REVEAL ── */
+.rv {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+              transform 0.85s cubic-bezier(0.16,1,0.3,1);
+}
+.rv.on {
+  opacity: 1;
+  transform: translateY(0);
+}

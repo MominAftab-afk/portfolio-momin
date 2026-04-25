@@ -1,0 +1,80 @@
+.section {
+  padding: 10rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgText {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 18vw;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,0,127,0.04);
+  pointer-events: none; user-select: none;
+  white-space: nowrap; letter-spacing: -5px;
+}
+
+.label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+  margin-bottom: 1.2rem;
+  position: relative; z-index: 1;
+}
+
+.title {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  position: relative; z-index: 1;
+}
+
+.sub {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-soft);     /* ← clearly readable */
+  max-width: 480px;
+  margin: 0 auto 3.5rem;
+  position: relative; z-index: 1;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-soft);     /* ← readable at rest */
+  border: 1px solid var(--dim-border);
+  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.link:hover {
+  color: var(--c);
+  border-color: var(--c);
+  background: color-mix(in srgb, var(--c) 5%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--c) 20%, transparent),
+              inset 0 0 20px color-mix(in srgb, var(--c) 4%, transparent);
+  text-shadow: 0 0 10px var(--c);
+}
