@@ -3,17 +3,17 @@ import useReveal from './useReveal'
 import styles from './Skills.module.css'
 
 const SKILLS = [
-  { name: 'Motion Design',      pct: 95, color: 'var(--neon-lime)'   },
-  { name: 'SFX Engineering',    pct: 90, color: 'var(--neon-pink)'   },
-  { name: 'Music Production',   pct: 88, color: 'var(--neon-cyan)'   },
-  { name: 'Visual Effects',     pct: 85, color: 'var(--neon-purple)' },
-  { name: 'Brand Storytelling', pct: 92, color: 'var(--neon-orange)' },
-  { name: 'Creative Direction', pct: 87, color: 'var(--neon-lime)'   },
+  { name: 'Motion Design', pct: 95, color: 'var(--neon-lime)' },
+  { name: 'SFX Engineering', pct: 90, color: 'var(--neon-pink)' },
+  { name: 'Music Production', pct: 95, color: 'var(--neon-cyan)' },
+  { name: 'Visual Effects', pct: 90, color: 'var(--neon-purple)' },
+  { name: 'Brand Storytelling', pct: 95, color: 'var(--neon-orange)' },
+  { name: 'Creative Direction', pct: 90, color: 'var(--neon-lime)' },
 ]
 
 function SkillRow({ name, pct, color }) {
   const fillRef = useRef(null)
-  const rowRef  = useReveal()
+  const rowRef = useReveal()
 
   useEffect(() => {
     const el = rowRef.current

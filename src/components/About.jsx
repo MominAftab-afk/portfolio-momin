@@ -3,13 +3,13 @@ import styles from './About.module.css'
 
 const STATS = [
   { num: '2+', label: 'Years Professional' },
-  { num: '10+', label: 'Major Brands'      },
-  { num: '3',   label: 'Countries Reached' },
-  { num: '∞',   label: 'Ideas in Queue'    },
+  { num: '10+', label: 'Major Brands' },
+  { num: '6', label: 'Countries Reached' },
+  { num: '∞', label: 'Ideas in Queue' },
 ]
 
 export default function About() {
-  const leftRef  = useReveal()
+  const leftRef = useReveal()
   const rightRef = useReveal()
 
   return (
