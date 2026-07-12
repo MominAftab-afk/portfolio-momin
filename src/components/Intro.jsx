@@ -165,6 +165,16 @@ export default function Intro({ onEnter }) {
           </div>
 
         </div>
+
+        {/* ── Mobile Only Floating CTA ── */}
+        <div className={`${styles.mobileCtaWrap} ${styles.fadeIn} ${styles.d600}`}>
+          <button onClick={onEnter} className={styles.btnMassive}>
+            <div className={styles.btnGlow} />
+            <span className={styles.btnText}>View Portfolio</span>
+            <ArrowRight className={styles.btnIconMassive} />
+          </button>
+        </div>
+
       </div>
     </section>
   )
