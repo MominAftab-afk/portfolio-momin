@@ -34,7 +34,7 @@ export default function Hero() {
         </p>
 
         <div className={styles.buttons}>
-          <a href="#work"    className={styles.btnNeon}>View Portfolio</a>
+          <a href="#work" className={styles.btnNeon}>View Portfolio</a>
           <a href="#contact" className={styles.btnGhost}>Get In Touch</a>
         </div>
       </div>
