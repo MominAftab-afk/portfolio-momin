@@ -1,0 +1,487 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Syne', sans-serif;
+}
+
+/* ══════════════════════════════════════
+   BACKGROUND & MASKS
+   ══════════════════════════════════════ */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 70%, transparent 100%);
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 70% 50%, transparent 0%, var(--bg) 80%);
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 8rem 4rem 4rem;
+}
+
+.gridCols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .gridCols {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.d100 { animation-delay: 0.1s; }
+.d200 { animation-delay: 0.2s; }
+.d300 { animation-delay: 0.3s; }
+.d400 { animation-delay: 0.4s; }
+.d500 { animation-delay: 0.5s; }
+.d600 { animation-delay: 0.6s; }
+
+/* ══════════════════════════════════════
+   LEFT COLUMN
+   ══════════════════════════════════════ */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+/* ── Badge ── */
+.badgeWrap { display: inline-flex; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 50px;
+  border: 1px solid var(--dim-border);
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s ease;
+}
+.badge:hover {
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
+}
+.badgeText {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.starIcon {
+  width: 14px; height: 14px;
+  color: var(--neon-lime);
+  fill: var(--neon-lime);
+  filter: drop-shadow(0 0 6px rgba(184,255,0,0.5));
+}
+
+/* ── Heading ── */
+.heading {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--text);
+  mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+}
+.gradientText {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(255,0,127,0.3);
+}
+
+/* ── Description ── */
+.desc {
+  max-width: 500px;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
+
+/* ── Buttons ── */
+.btnGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  background: var(--text);
+  color: var(--bg);
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btnPrimary:hover {
+  transform: scale(1.02);
+  background: var(--neon-lime);
+  box-shadow: 0 0 20px rgba(184,255,0,0.3);
+}
+.btnIcon {
+  width: 16px; height: 16px;
+  transition: transform 0.3s;
+}
+.btnPrimary:hover .btnIcon {
+  transform: translateX(4px);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: 1px solid var(--dim-border);
+  background: color-mix(in srgb, var(--surface) 20%, transparent);
+  color: var(--text);
+  backdrop-filter: blur(8px);
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btnSecondary:hover {
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0,255,247,0.2);
+}
+.btnIconPlay {
+  width: 16px; height: 16px;
+  fill: currentColor;
+}
+
+
+/* ══════════════════════════════════════
+   RIGHT COLUMN (GLASS CARDS)
+   ══════════════════════════════════════ */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.glassCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--dim-border);
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; height: 50px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  border: 1px solid var(--dim-border);
+}
+.targetIcon {
+  width: 24px; height: 24px;
+  color: var(--text);
+}
+.cardTitle {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text);
+}
+.cardSub {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  margin-top: 0.25rem;
+}
+
+/* ── Progress Bar ── */
+.progressSection {
+  margin-bottom: 2rem;
+}
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.progressLabel { color: var(--text-soft); }
+.progressValue { color: var(--text); font-weight: 700; }
+.progressTrack {
+  height: 6px;
+  border-radius: 50px;
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+  box-shadow: 0 0 10px rgba(255,0,127,0.5);
+}
+
+.divider {
+  height: 1px;
+  background: var(--dim-border);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Mini Stats ── */
+.miniStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+.statsRow1 {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  width: 100%;
+}
+.qualityRow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+.statItem:hover { transform: translateY(-4px); }
+.statVal {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.statLabel {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-soft);
+  margin-top: 0.25rem;
+}
+
+/* ── Tag Pills ── */
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.tagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 50px;
+  border: 1px solid var(--dim-border);
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  padding: 0.35rem 0.85rem;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-soft);
+}
+.pingWrap {
+  position: relative;
+  display: flex;
+  width: 8px; height: 8px;
+}
+.pingAnim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--neon-lime);
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.pingDot {
+  position: relative;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--neon-lime);
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2.5); opacity: 0; }
+}
+.crownIcon {
+  width: 14px; height: 14px;
+  color: var(--neon-pink);
+}
+
+/* ── Marquee Card ── */
+.marqueeCard {
+  border-radius: 24px;
+  border: 1px solid var(--dim-border);
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.5rem 0;
+  overflow: hidden;
+}
+.marqueeTitle {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-soft);
+  padding: 0 2rem;
+  margin-bottom: 1.5rem;
+}
+.marqueeWrap {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+.marqueeTrack {
+  display: flex;
+  gap: 3rem;
+  padding: 0 1.5rem;
+  animation: marquee 30s linear infinite;
+}
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.marqueeItem:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+.marqueeIcon {
+  width: 24px; height: 24px;
+  color: var(--text);
+  fill: currentColor;
+}
+.marqueeText {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .container { padding: 8rem 2.5rem 4rem; }
+  .heading { font-size: clamp(3rem, 7vw, 4rem); }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 7rem 1.5rem 3rem; }
+  .hero { align-items: flex-start; }
+  .heading { font-size: 2.8rem; }
+  .desc { font-size: 0.8rem; }
+  .glassCard { padding: 1.5rem; }
+  .cardTitle { font-size: 1.5rem; }
+  .btnPrimary, .btnSecondary { width: 100%; }
+}
