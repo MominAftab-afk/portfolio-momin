@@ -541,6 +541,11 @@
 }
 
 @media (max-width: 768px) {
+  .bgImage {
+    background-size: auto 135%; /* Force vertical overflow on portrait */
+    background-position: 60% 100%; /* Shift the image left to center the face, and UP so the face clears the cards */
+  }
+  
   .hero { 
     height: 100dvh; 
     min-height: auto;
