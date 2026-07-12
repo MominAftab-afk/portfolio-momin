@@ -61,7 +61,7 @@
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--neon-lime);
-  text-shadow: 0 0 12px var(--neon-lime);
+  text-shadow: 0 0 calc(12px * var(--glow)) var(--neon-lime);
   margin-bottom: 1.8rem;
   display: flex; align-items: center; gap: 1rem;
   opacity: 0;
@@ -90,7 +90,7 @@
   display: block;
   color: transparent;
   -webkit-text-stroke: 2px var(--neon-pink);
-  text-shadow: 0 0 40px rgba(255,0,127,0.5);
+  text-shadow: 0 0 calc(40px * var(--glow)) rgba(255,0,127,0.5);
   position: relative;
 }
 .nameWord2::after {
@@ -228,7 +228,7 @@
 
 .imgOverlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(4,4,8,0.55) 100%);
+  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--bg) 55%, transparent) 100%);
   pointer-events: none;
 }
 
@@ -240,7 +240,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 0.65rem 1.1rem;
-  background: rgba(10,10,20,0.9);
+  background: var(--nav-bg);
   border: 1px solid;
   backdrop-filter: blur(8px);
   white-space: nowrap;

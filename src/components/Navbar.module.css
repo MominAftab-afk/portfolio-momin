@@ -1,34 +1,101 @@
-.nav {
+/* ══════════════════════════════════════
+   NAV WRAPPER (Outer container)
+   ══════════════════════════════════════ */
+.navWrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 200;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 4rem;
-  background: rgba(4, 4, 8, 0.80);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(184, 255, 0, 0.12);
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  pointer-events: none; /* Let clicks pass through empty areas */
 }
 
-.logo {
+/* ══════════════════════════════════════
+   THE PILL
+   ══════════════════════════════════════ */
+.pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  padding: 0.75rem 1.5rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--nav-border);
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* ── Scrolled state: INVERTS ── */
+.pill.scrolled {
+  background: var(--nav-scrolled);
+  border-color: var(--nav-scrolled-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+.pill.scrolled .logoText {
+  color: var(--nav-scrolled-text);
+  text-shadow: none;
+}
+.pill.scrolled .link {
+  color: var(--nav-scrolled-text);
+  opacity: 0.7;
+}
+.pill.scrolled .link:hover {
+  opacity: 1;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px var(--neon-cyan);
+}
+.pill.scrolled .lucideIcon {
+  color: var(--nav-scrolled-text);
+}
+.pill.scrolled .toggle {
+  color: var(--nav-scrolled-text);
+  border-color: rgba(128,128,128,0.2);
+}
+.pill.scrolled .ctaBtn {
+  background: var(--nav-scrolled-text);
+  color: var(--text);
+}
+.pill.scrolled .ctaBtn:hover {
+  background: color-mix(in srgb, var(--nav-scrolled-text) 80%, transparent);
+}
+
+/* ══════════════════════════════════════
+   LOGO
+   ══════════════════════════════════════ */
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.logoSvg {
+  width: 32px;
+  height: 32px;
+}
+.logoText {
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
-  font-size: 1.1rem;
-  letter-spacing: 4px;
-  color: var(--neon-lime);
-  text-shadow: 0 0 20px var(--neon-lime), 0 0 60px rgba(184, 255, 0, 0.3);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--text);
   user-select: none;
+  transition: color 0.4s, text-shadow 0.4s;
 }
 
-.links {
+/* ══════════════════════════════════════
+   DESKTOP NAVIGATION
+   ══════════════════════════════════════ */
+.desktopNav {
   display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  gap: 2rem;
 }
 
 .link {
@@ -38,97 +105,179 @@
   text-transform: uppercase;
   color: var(--text-soft);
   text-decoration: none;
-  position: relative;
-  transition: color 0.25s, text-shadow 0.25s;
+  transition: color 0.3s, text-shadow 0.3s, opacity 0.3s;
 }
-
-.link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--neon-cyan);
-  box-shadow: 0 0 8px var(--neon-cyan);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
 .link:hover {
   color: var(--neon-cyan);
   text-shadow: 0 0 12px var(--neon-cyan);
 }
 
-.link:hover::after {
-  transform: scaleX(1);
+/* ══════════════════════════════════════
+   RIGHT GROUP (Toggle + CTA / Burger)
+   ══════════════════════════════════════ */
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* ── Hamburger button (hidden on desktop) ── */
-.burger {
+/* ── CTA Button ── */
+.desktopCta {
+  display: flex;
+  align-items: center;
+}
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne Mono', monospace;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.ctaBtn:hover {
+  background: color-mix(in srgb, var(--text) 80%, transparent);
+}
+
+/* ── Theme Toggle ── */
+.toggle {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--dim-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  padding: 0;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.toggle:hover {
+  border-color: var(--neon-lime);
+  color: var(--neon-lime);
+  box-shadow: 0 0 15px rgba(184,255,0,0.2);
+  transform: scale(1.1);
+}
+
+.toggleIcon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.toggleIcon.isLight {
+  transform: rotate(180deg);
+}
+
+.sunIcon, .moonIcon {
+  position: absolute;
+  inset: 0;
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.sunIcon { opacity: 1; transform: scale(1) rotate(0); }
+.moonIcon { opacity: 0; transform: scale(0.5) rotate(90deg); }
+.isLight .sunIcon { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+.isLight .moonIcon { opacity: 1; transform: scale(1) rotate(0); }
+
+
+/* ── Mobile Burger ── */
+.mobileBurger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px;
-  z-index: 210;
 }
-
-.burger span {
-  display: block;
+.lucideIcon {
   width: 24px;
-  height: 2px;
-  background: var(--neon-lime);
-  box-shadow: 0 0 6px var(--neon-lime);
-  transition: transform 0.3s, opacity 0.3s;
+  height: 24px;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
-.burger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+/* ══════════════════════════════════════
+   MOBILE OVERLAY
+   ══════════════════════════════════════ */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 500;
+  padding: 6rem 2rem 2rem;
+  pointer-events: auto;
 }
 
-.burger.open span:nth-child(2) {
-  opacity: 0;
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.lucideIconLg {
+  width: 32px;
+  height: 32px;
+  color: var(--text);
 }
 
-.burger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.mobileLink {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+  display: block;
 }
 
-/* ── Responsive ── */
+.mobileCtaWrap {
+  margin-top: 2rem;
+}
+.mobileCtaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-family: 'Syne Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .nav {
-    padding: 1rem 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .burger {
-    display: flex;
-  }
-
-  .links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem 0 0.5rem;
-    border-top: 1px solid rgba(184, 255, 0, 0.12);
-    margin-top: 0.75rem;
-  }
-
-  .links.open {
-    display: flex;
-  }
-
-  .links li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .link {
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-  }
+  .desktopNav { display: none; }
+  .desktopCta { display: none; }
+  .mobileBurger { display: flex; }
+  .toggle { width: 32px; height: 32px; }
+  .toggleIcon, .sunIcon, .moonIcon { width: 16px; height: 16px; }
+  .pill { padding: 0.5rem 1rem; }
 }

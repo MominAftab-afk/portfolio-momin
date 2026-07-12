@@ -30,8 +30,8 @@
 }
 .item:hover::before   { transform: scaleY(1); }
 .item:hover {
-  background: rgba(0,255,247,0.025);
-  border-color: rgba(0,255,247,0.18);
+  background: color-mix(in srgb, var(--neon-cyan) 2.5%, transparent);
+  border-color: color-mix(in srgb, var(--neon-cyan) 18%, transparent);
 }
 
 .date {
